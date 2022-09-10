@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+  liquibase:
+    enabled: false
+server:
+  servlet:
+    context-path: /voting
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: src/main/resources/cert/certificate.p12
+    key-store-password: slpolitics
+    key-store-type: PKCS12
+    key-alias: slpolitics
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/voting
+#    driver-class-name: com.mysql.jdbc.Driver
+    username: voting-user
+    password: p@$$w0rd
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
