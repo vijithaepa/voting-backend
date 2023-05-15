@@ -2,8 +2,8 @@
 FROM amazoncorretto:11
 
 # install some dependancies
-#WORKDIR /usr/home/server
-VOLUME '/server/backend'
+WORKDIR /usr/home/server
+#VOLUME '/server/backend'
 #EXPOSE 8080
 ARG JAR_FILE='./build/libs/docker_container-0.0.1-SNAPSHOT.jar'
 COPY ${JAR_FILE} /server/backend/app.jar
