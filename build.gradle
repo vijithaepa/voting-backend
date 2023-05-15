@@ -1,35 +1,32 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.3'
-    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-    id 'java'
+	id 'java'
+	id 'org.springframework.boot' version '2.7.3'
+	id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'info.slnews'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+//sourceCompatibility = '17'
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
+
+//springBoot {
+//	mainClass = 'com.example.docker_container.DockerContainerApplication'
+//}
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    implementation 'org.springframework.boot:spring-boot-starter-mail'
-//    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-//    implementation 'org.liquibase:liquibase-core'
-//    implementation 'mysql:mysql-connector-java'
-
-//    implementation 'com.amazonaws:aws-java-sdk:1.12.295'
-
-//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-//tasks.named('test') {
-//    useJUnitPlatform()
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+//bootJar {
+//	manifest {
+//		attributes 'Start-Class': 'com.example.docker_container.DockerContainerApplication'
+//	}
 //}
