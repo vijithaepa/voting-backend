@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -41,12 +41,15 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
       with:
-        version: v0.6.3
+        version: v0.7.0
+    - name: Run build script
+      run: ls -l
+      shell: bash
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
         image: vijithaepa/voting-backend
         context: .
-        file: ./Dockerfile
+        file: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/vote:latest
