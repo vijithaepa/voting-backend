@@ -39,12 +39,14 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@v1
+      with:
+        version: v0.6.3
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
         image: vijithaepa/voting-backend
-        context: ./
+        context: .
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/vote:latest
