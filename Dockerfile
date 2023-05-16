@@ -5,12 +5,12 @@ FROM amazoncorretto:11
 WORKDIR /server/backend
 #VOLUME '/server/backend'
 
-ARG JAR_FILE='./build/libs/docker_container-0.0.1-SNAPSHOT.jar'
+ARG JAR_FILE='build/libs/docker_container-0.0.1-SNAPSHOT.jar'
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --chown=nextjs:nodejs ${JAR_FILE} ./app.jar
+COPY --chown=nextjs:nodejs ${JAR_FILE} app.jar
 
 #USER nextjs
 
