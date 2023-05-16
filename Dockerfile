@@ -7,10 +7,10 @@ WORKDIR /server/backend
 
 ARG JAR_FILE='build/libs/voting-backend-0.0.1-SNAPSHOT.jar'
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+#RUN addgroup --system --gid 1001 nodejs
+#RUN adduser --system --uid 1001 nextjs
 
-COPY --chown=nextjs:nodejs ${JAR_FILE} app.jar
+COPY ${JAR_FILE} app.jar
 
 #USER nextjs
 
