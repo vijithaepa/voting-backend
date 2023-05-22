@@ -12,6 +12,10 @@ on:
     branches: [ "release" ]
 #  pull_request:
 #    branches: [ "release" ]
+env:
+  applicationfolder: spring-boot-hello-world-example
+  AWS_REGION: ap-southeast-2
+  S3BUCKET: slnews.info
 
 permissions:
   contents: read
@@ -22,32 +26,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11 and build
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'corretto'
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: build
-      #    - run: ./gradlew build --no-daemon
-    - name: Login to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-#    - name: Run build script
-#      run: ls -lrt build/libs
-#      shell: bash
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        image: vijithaepa/voting-backend
-        context: ./
-        file: ./Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11 and build
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'corretto'
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
+        #    - run: ./gradlew build --no-daemon
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Run bash script
+        #      run: ls -lrt build/libs
+        run: echo ${{ steps.ip.outputs.ipv4 }}
+        shell: bash
+
+  upload:
+    needs: build
+    name: Upload to Docker
+    runs-on: ubuntu-latest
+    #    environment: Dev
+    steps:
+      - name: Run PWD
+        run: pwd
+        shell: bash
+      - name: Run PWD
+        run: ls -lrt
+        shell: bash
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          image: vijithaepa/voting-backend
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
