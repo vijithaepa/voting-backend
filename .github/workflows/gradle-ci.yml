@@ -12,10 +12,6 @@ on:
     branches: [ "release" ]
 #  pull_request:
 #    branches: [ "release" ]
-env:
-  applicationfolder: spring-boot-hello-world-example
-  AWS_REGION: ap-southeast-2
-  S3BUCKET: slnews.info
 
 permissions:
   contents: read
@@ -44,17 +40,9 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
-    - name: Run bash script
+#    - name: Run build script
 #      run: ls -lrt build/libs
-      run: echo ${{ steps.ip.outputs.ipv4 }}
-      shell: bash
-
-  upload:
-    needs: build
-    name: Upload to Docker
-    runs-on: ubuntu-latest
-#    environment: Dev
-    steps:
+#      shell: bash
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
