@@ -50,20 +50,6 @@ jobs:
           pwd
           ls -lrt build/libs
         shell: bash
-
-  upload:
-    needs: build
-    name: Upload to Docker
-    runs-on: ubuntu-latest
-    #    environment: Dev
-    steps:
-      - name: Run PWD
-        run: |
-          pwd
-          ls -lrt
-          echo 'ls -lrt build/libs' 
-          ls -lrt build/libs
-        shell: bash
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
@@ -72,3 +58,25 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
+          
+#  upload:
+#    needs: build
+#    name: Upload to Docker
+#    runs-on: ubuntu-latest
+#    #    environment: Dev
+#    steps:
+#      - name: Run PWD
+#        run: |
+#          pwd
+#          ls -lrt
+#          echo 'ls -lrt build/libs'
+#          ls -lrt build/libs
+#        shell: bash
+#      - name: Build and push
+#        uses: docker/build-push-action@v4
+#        with:
+#          image: vijithaepa/voting-backend
+#          context: ./
+#          file: ./Dockerfile
+#          push: true
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
