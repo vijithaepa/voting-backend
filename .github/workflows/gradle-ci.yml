@@ -58,10 +58,11 @@ jobs:
     #    environment: Dev
     steps:
       - name: Run PWD
-        run: pwd
-        shell: bash
-      - name: Run LIST
-        run: ls -lrt
+        run: |
+          pwd
+          ls -lrt
+          echo 'ls -lrt build/libs' 
+          ls -lrt build/libs
         shell: bash
       - name: Build and push
         uses: docker/build-push-action@v4
