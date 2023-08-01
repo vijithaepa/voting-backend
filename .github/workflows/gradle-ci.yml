@@ -58,7 +58,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
-          
+
 #  upload:
 #    needs: build
 #    name: Upload to Docker
