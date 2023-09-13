@@ -64,6 +64,9 @@ jobs:
           key: ${{ secrets.EC2_SECRET }}
 #          port: ${{ secrets.PORT }}
           script: |
-            whoami
-            pwd
             ls -al
+            docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/vote-backend:latest
+            docker stop backend_server
+            docker rm backend_server
+            docker run --detach --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/vote-backend:latest
