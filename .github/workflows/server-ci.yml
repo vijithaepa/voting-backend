@@ -36,7 +36,7 @@ jobs:
           arguments: build
         #    - run: ./gradlew build --no-daemon
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -49,9 +49,9 @@ jobs:
 #          ls -lrt build/libs
 #        shell: bash
       - name: Build and push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
-          image: voting-backend
+          image: voting-server
           context: ./
           file: ./Dockerfile
           push: true
