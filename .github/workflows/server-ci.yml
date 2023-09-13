@@ -1,17 +1,13 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
 name: Java CI with Gradle
 
 on:
-  push:
+#  push:
+#    branches: [ "docker" ]
+  pull_request:
     branches: [ "docker" ]
-#  pull_request:
-#    branches: [ "release" ]
 env:
   applicationfolder: spring-boot-hello-world-example
   AWS_REGION: ap-southeast-2
@@ -32,8 +28,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'corretto'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
         with:
           arguments: build
         #    - run: ./gradlew build --no-daemon
@@ -44,12 +42,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Run bash script - WHERE AM I
-        #      run: ls -lrt build/libs
-        run: |
-          pwd
-          ls -lrt build/libs
-        shell: bash
+#      - name: Run bash script - WHERE AM I
+#        #      run: ls -lrt build/libs
+#        run: |
+#          pwd
+#          ls -lrt build/libs
+#        shell: bash
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
