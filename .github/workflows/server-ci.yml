@@ -4,10 +4,10 @@
 name: Java CI with Gradle
 
 on:
-  push:
+#  push:
+#    branches: [ "docker" ]
+  pull_request:
     branches: [ "docker" ]
-#  pull_request:
-#    branches: [ "release" ]
 env:
   applicationfolder: spring-boot-hello-world-example
   AWS_REGION: ap-southeast-2
