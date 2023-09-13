@@ -56,7 +56,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ IMAGE }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
       - name: Docker pull and run image
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -67,7 +67,7 @@ jobs:
           script: |
             ls -al
             sudo docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ IMAGE }}:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
             sudo docker stop backend_server
             sudo docker rm backend_server
-            sudo docker run --detach --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ IMAGE }}:latest
+            sudo docker run --detach --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
