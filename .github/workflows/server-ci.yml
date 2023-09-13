@@ -4,10 +4,10 @@
 name: Java CI with Gradle
 
 on:
-#  push:
-#    branches: [ "docker" ]
-  pull_request:
+  push:
     branches: [ "docker" ]
+#  pull_request:
+#    branches: [ "docker" ]
 env:
   applicationfolder: spring-boot-hello-world-example
   AWS_REGION: ap-southeast-2
@@ -56,25 +56,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
-
-#  upload:
-#    needs: build
-#    name: Upload to Docker
-#    runs-on: ubuntu-latest
-#    #    environment: Dev
-#    steps:
-#      - name: Run PWD
-#        run: |
-#          pwd
-#          ls -lrt
-#          echo 'ls -lrt build/libs'
-#          ls -lrt build/libs
-#        shell: bash
-#      - name: Build and push
-#        uses: docker/build-push-action@v4
-#        with:
-#          image: vijithaepa/voting-backend
-#          context: ./
-#          file: ./Dockerfile
-#          push: true
-#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
