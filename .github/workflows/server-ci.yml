@@ -70,4 +70,4 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
             sudo docker stop backend_server
             sudo docker rm backend_server
-            sudo docker run --detach --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+            sudo docker run -d --name backend_server -m http:server -b 0.0.0.0 -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
