@@ -51,7 +51,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          image: vijithaepa/voting-backend
+          image: voting-backend
           context: ./
           file: ./Dockerfile
           push: true
