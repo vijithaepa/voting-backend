@@ -51,8 +51,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          image: voting-server
+#          image: voting-server
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-server:latest
