@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 
 @RestController
-@RequestMapping("/docker")
+@RequestMapping("/api/docker")
 public class UserController {
 
     @GetMapping("greeting")
