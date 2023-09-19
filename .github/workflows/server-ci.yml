@@ -71,3 +71,4 @@ jobs:
             sudo docker stop backend_server
             sudo docker rm backend_server
             sudo docker run -d --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+            
