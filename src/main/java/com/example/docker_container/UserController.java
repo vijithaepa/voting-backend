@@ -1,5 +1,6 @@
 package com.example.docker_container;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +13,9 @@ import java.time.Instant;
 public class UserController {
 
     @GetMapping("greeting")
-    public String getGreetings() {
+    public ResponseEntity<String> getGreetings() {
 
-        return "Hello, How are you, today is " + Instant.now().toString();
+        return ResponseEntity.ok("Hello, How are you, today is " + Instant.now().toString());
     }
 
 }
