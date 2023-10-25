@@ -1,13 +1,13 @@
-package info.slnews.voting;
+package info.slnews.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VotingBackendApplicationTests {
+class SlnewsApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }

@@ -1,0 +1,74 @@
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ "development" ]
+#  pull_request:
+#    branches: [ "docker" ]
+env:
+  applicationfolder: spring-boot-hello-world-example
+  AWS_REGION: ap-southeast-2
+  S3BUCKET: slnews.info
+  IMAGE: vote-backend
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11 and build
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'corretto'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
+        with:
+          arguments: build
+        #    - run: ./gradlew build --no-daemon
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+#      - name: Run bash script - WHERE AM I
+#        #      run: ls -lrt build/libs
+#        run: |
+#          pwd
+#          ls -lrt build/libs
+#        shell: bash
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+#          image: voting-server
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+      - name: Docker pull and run image
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SECRET }}
+#          port: ${{ secrets.PORT }}
+          script: |
+            ls -al
+            sudo docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+            sudo docker stop backend_server
+            sudo docker rm backend_server
+            sudo docker run -d --name backend_server -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+            
