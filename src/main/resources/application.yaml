@@ -19,11 +19,17 @@ spring:
   config:
     activate:
       on-profile: dev
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/voting
-##    driver-class-name: com.mysql.jdbc.Driver
-#    username: voting-user
-#    password: p@$$w0rd
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_VOTING_HOST:localhost}:3306/slnews-voting
+    username: ${DB_VOTING_USER:user}
+    password: ${DB_VOTING_PASS:password}
+    hikari:
+      max-lifetime: 360000 # 1 hour
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    database: mysql
+
 #
 #  liquibase:
 #    change-log: classpath:db/changelog/db.changelog-master.yaml
