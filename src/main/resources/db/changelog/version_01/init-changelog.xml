@@ -1,0 +1,179 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="timmy (generated)" id="1698925069715-1">
+        <createTable tableName="activities">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="category" type="ENUM('SOCIAL_SERVICE', 'POLITICAL_EVENT', 'COMMUNITY_EVENT', 'CHARITY_EVENT')"/>
+            <column name="date" type="datetime"/>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="role" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_category" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-2">
+        <createTable tableName="convictions">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="credibility" type="INT"/>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="incident_date" type="datetime"/>
+            <column name="published_date" type="datetime"/>
+            <column name="source" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-3">
+        <createTable tableName="education">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="commenced_on" type="datetime"/>
+            <column name="description" type="VARCHAR(250)"/>
+            <column name="institution" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qualification" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="ENUM('SUSPENDED', 'IM_PROGRESS', 'FAILED', 'COMPLETED')">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-4">
+        <createTable tableName="member_info">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="address" type="VARCHAR(250)"/>
+            <column name="created_on" type="datetime"/>
+            <column name="date_of_birth" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="image" type="VARCHAR(250)"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_no" type="VARCHAR(12)"/>
+            <column name="updated_on" type="datetime"/>
+            <column name="alies" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-5">
+        <createTable tableName="organisation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="color" type="VARCHAR(50)"/>
+            <column name="commence_date" type="datetime"/>
+            <column name="description" type="VARCHAR(500)"/>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="owner" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-6">
+        <createTable tableName="political_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="commence_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="no_of_years" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(100)"/>
+            <column name="org_id" type="BIGINT">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-7">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="address" type="VARCHAR(250)"/>
+            <column name="alies" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="datetime"/>
+            <column name="date_of_birth" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="gender" type="VARCHAR(10)"/>
+            <column name="last_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_no" type="VARCHAR(12)"/>
+            <column name="profession" type="VARCHAR(100)"/>
+            <column name="active" type="BIT(1)"/>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permissions" type="VARCHAR(255)"/>
+            <column name="roles" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_naame" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_names" type="VARCHAR(100)"/>
+            <column name="user_name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-8">
+        <createTable tableName="votes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="member_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="voted_on" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-9">
+        <createTable tableName="voting-history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="member_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="DECIMAL(38, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1698925069715-10">
+        <addForeignKeyConstraint baseColumnNames="org_id" baseTableName="political_history" constraintName="FKa70w7dc06nq2dydnglm6rel1b" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="organisation" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

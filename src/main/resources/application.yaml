@@ -22,13 +22,16 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${DB_VOTING_HOST:localhost}:3306/slnews-voting
-    username: ${DB_VOTING_USER:user}
+    username: ${DB_VOTING_USER:voting-user}
     password: ${DB_VOTING_PASS:password}
     hikari:
       max-lifetime: 360000 # 1 hour
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     database: mysql
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: update
 
 #
 #  liquibase:
