@@ -27,10 +27,14 @@ public class Convictions {
     @Column(name = "credibility")
     private int credibility;
 
+    @Column(name = "member_id", nullable = false)
+    private Long memberId;
+
     public Convictions() {
     }
 
-    public Convictions(String description, Instant publishedDate, Instant incidentDate, String source, int credibility) {
+    public Convictions(String description, Instant publishedDate, Instant incidentDate, String source,
+                       int credibility) {
         this.description = description;
         this.publishedDate = publishedDate;
         this.incidentDate = incidentDate;

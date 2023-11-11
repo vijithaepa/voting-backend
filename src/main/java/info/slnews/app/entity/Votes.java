@@ -16,10 +16,10 @@ public class Votes {
     private int rate;
 
     @Column(name = "member_id", nullable = false)
-    private Long member_id;
+    private Long memberId;
 
     @Column(name = "user_id", nullable = false)
-    private Long user_id;
+    private Long userId;
 
     @Column(name = "voted_on", nullable = false)
     private Instant votedOn;
@@ -27,10 +27,10 @@ public class Votes {
     public Votes() {
     }
 
-    public Votes(int rate, Long member_id, Long user_id) {
+    public Votes(int rate, Long memberId, Long userId) {
         this.rate = rate;
-        this.member_id = member_id;
-        this.user_id = user_id;
+        this.memberId = memberId;
+        this.userId = userId;
         this.votedOn = Instant.now();
     }
 
@@ -42,12 +42,12 @@ public class Votes {
         return rate;
     }
 
-    public Long getMember_id() {
-        return member_id;
+    public Long getMemberId() {
+        return memberId;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
     public Instant getVotedOn() {

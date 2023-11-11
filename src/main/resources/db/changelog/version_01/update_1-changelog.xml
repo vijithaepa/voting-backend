@@ -1,0 +1,74 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="timmy (generated)" id="1699695052361-8">
+        <addColumn tableName="political_history">
+            <column name="member_id" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-9">
+        <addColumn tableName="activities">
+            <column name="member_id" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-10">
+        <addColumn tableName="convictions">
+            <column name="member_id" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-11">
+        <addColumn tableName="education">
+            <column name="member_id" type="BIGINT(19)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-12">
+        <addColumn tableName="member_info">
+            <column name="status" type="ENUM('INACTIVE', 'DRAFT', 'ACTIVE')"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-13">
+        <addColumn tableName="user">
+            <column name="status" type="ENUM('INACTIVE', 'DRAFT', 'ACTIVE')"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-14">
+        <addUniqueConstraint columnNames="email" constraintName="UK_ma4j1luneqryowe3xq2lpdifb" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-15">
+        <dropColumn columnName="alies" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-16">
+        <dropColumn columnName="first_naame" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-17">
+        <dropColumn columnName="username" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-1">
+        <modifyDataType columnName="category" newDataType="ENUM('SOCIAL_SERVICE','POLITICAL_EVENT','OTHER','COMMUNITY_EVENT','CHARITY_EVENT')" tableName="activities"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-2">
+        <addNotNullConstraint columnDataType="varchar(100)" columnName="email" tableName="member_info" validate="true"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-3">
+        <modifyDataType columnName="first_name" newDataType="varchar(50)" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-4">
+        <modifyDataType columnName="last_name" newDataType="varchar(50)" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-5">
+        <modifyDataType columnName="other_category" newDataType="varchar(100)" tableName="activities"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-6">
+        <modifyDataType columnName="password" newDataType="varchar(50)" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1699695052361-7">
+        <modifyDataType columnName="status" newDataType="ENUM('SUSPENDED','IM_PROGRESS','FAILED','COMPLETED')" tableName="education"/>
+    </changeSet>
+</databaseChangeLog>

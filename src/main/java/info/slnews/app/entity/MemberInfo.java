@@ -1,5 +1,6 @@
 package info.slnews.app.entity;
 
+import info.slnews.app.enums.UserStatus;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -33,19 +34,27 @@ public class MemberInfo {
     @Column(name = "createdOn")
     private Instant createdOn;
 
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
     @Column(name = "updatedOn")
     private Instant updatedOn;
 
     public MemberInfo() {
     }
 
-    public MemberInfo(String name, String address, Instant dateOfBirth, String email, String phoneNo, String image) {
+    public MemberInfo(String name, String address, Instant dateOfBirth, String email, String phoneNo, String image,
+                      Instant createdOn, UserStatus status, Instant updatedOn) {
         this.name = name;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNo = phoneNo;
         this.image = image;
+        this.createdOn = createdOn;
+        this.status = status;
+        this.updatedOn = updatedOn;
     }
 
     public Long getId() {
@@ -84,11 +93,15 @@ public class MemberInfo {
         return updatedOn;
     }
 
+    public UserStatus getStatus() {
+        return status;
+    }
+
     @PreUpdate
     @PrePersist
     public void updateTimeStamps() {
         updatedOn = Instant.now();
-        if (createdOn == null) {
+        if(createdOn == null) {
             createdOn = Instant.now();
         }
     }

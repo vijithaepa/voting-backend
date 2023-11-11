@@ -18,7 +18,7 @@ public class VotingHistory {
     private Long id;
 
     @Column(name = "member_id", nullable = false)
-    private Long member_id;
+    private Long memberId;
 
     @Column(name = "rate", nullable = false)
     private BigDecimal rate;
@@ -26,4 +26,28 @@ public class VotingHistory {
     @Column(name = "date", nullable = false)
     private Instant date;
 
+    public VotingHistory() {
+    }
+
+    public VotingHistory(Long memberId, BigDecimal rate, Instant date) {
+        this.memberId = memberId;
+        this.rate = rate;
+        this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public BigDecimal getRate() {
+        return rate;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
 }

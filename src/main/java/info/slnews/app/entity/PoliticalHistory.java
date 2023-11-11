@@ -25,6 +25,9 @@ public class PoliticalHistory {
     @JoinColumn(name = "org_id", referencedColumnName = "id")
     private Organisation organisation;
 
+    @Column(name = "member_id", nullable = false)
+    private Long memberId;
+
     public PoliticalHistory() {
     }
 

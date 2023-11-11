@@ -29,10 +29,14 @@ public class Education {
     @Column(name = "description", length = 250)
     private String description;
 
+    @Column(name = "member_id", nullable = false)
+    private Long memberId;
+
     public Education() {
     }
 
-    public Education(String qualification, String institution, Instant commencedOn, QualificationStatus status, String description) {
+    public Education(String qualification, String institution, Instant commencedOn, QualificationStatus status,
+                     String description) {
         this.qualification = qualification;
         this.institution = institution;
         this.commencedOn = commencedOn;

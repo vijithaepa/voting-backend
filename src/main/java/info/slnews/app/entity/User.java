@@ -1,5 +1,6 @@
 package info.slnews.app.entity;
 
+import info.slnews.app.enums.UserStatus;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -13,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_naame", length = 50, nullable = false)
+    @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 
     @Column(name = "last_name", length = 50, nullable = false)
@@ -60,23 +61,33 @@ public class User {
     @Column(name = "createdOn")
     private Instant createdOn;
 
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
     public User() {
     }
 
-    public User(String firstName, String lastName, String otherNames, String alies, String username, String password, boolean active, String address, Instant dateOfBirth, String email, String phoneNo, String gender, String profession) {
+    public User(String firstName, String lastName, String otherNames, String alies, String userName, String password,
+                boolean active, String roles, String permissions, String address, Instant dateOfBirth, String email,
+                String phoneNo, String gender, String profession, Instant createdOn, UserStatus status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.otherNames = otherNames;
         this.alies = alies;
-        this.userName = username;
+        this.userName = userName;
         this.password = password;
         this.active = active;
+        this.roles = roles;
+        this.permissions = permissions;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNo = phoneNo;
         this.gender = gender;
         this.profession = profession;
+        this.createdOn = createdOn;
+        this.status = status;
     }
 
     public Long getId() {
@@ -145,5 +156,9 @@ public class User {
 
     public Instant getCreatedOn() {
         return createdOn;
+    }
+
+    public UserStatus getStatus() {
+        return status;
     }
 }
