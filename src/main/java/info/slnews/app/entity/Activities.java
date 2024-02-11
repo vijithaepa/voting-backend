@@ -26,8 +26,8 @@ public class Activities {
     @Column(name = "category")
     private ActivityCategory category;
 
-    @Column(name = "other_category", length = 100)
-    private String otherCategory;
+//    @Column(name = "other_category", length = 100)
+//    private String otherCategory;
 
     @Column(name = "member_id", nullable = false)
     private Long memberId;

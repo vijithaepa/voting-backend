@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="timmy (generated)" id="1707652238113-9">
+        <addColumn tableName="organisation">
+            <column name="short_name" type="VARCHAR(100 BYTE)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-10">
+        <addUniqueConstraint columnNames="qualification, institution" constraintName="UNIQUE_INS_QLI" tableName="education"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-1">
+        <modifyDataType columnName="category" newDataType="ENUM('SOCIAL_SERVICE','POLITICAL_EVENT','OTHER','COMMUNITY_EVENT','CHARITY_EVENT')" tableName="activities"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-2">
+        <addNotNullConstraint columnDataType="varchar(50)" columnName="first_name" tableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-3">
+        <addNotNullConstraint columnDataType="varchar(50)" columnName="last_name" tableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-4">
+        <addNotNullConstraint columnDataType="varchar(50)" columnName="password" tableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-5">
+        <modifyDataType columnName="status" newDataType="ENUM('SUSPENDED','IM_PROGRESS','FAILED','COMPLETED')" tableName="education"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-6">
+        <addNotNullConstraint columnDataType="ENUM('SUSPENDED','IM_PROGRESS','FAILED','COMPLETED')" columnName="status" tableName="education" validate="true"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-7">
+        <modifyDataType columnName="status" newDataType="ENUM('INACTIVE','DRAFT','ACTIVE')" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1707652238113-8">
+        <modifyDataType columnName="status" newDataType="ENUM('INACTIVE','DRAFT','ACTIVE')" tableName="user"/>
+    </changeSet>
+</databaseChangeLog>

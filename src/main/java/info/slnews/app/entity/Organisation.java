@@ -15,6 +15,9 @@ public class Organisation {
     @Column(name = "name", length = 100)
     private String name;
 
+    @Column(name = "shortName", length = 100)
+    private String shortName;
+
     @Column(name = "description", length = 500)
     private String description;
 
@@ -30,8 +33,10 @@ public class Organisation {
     public Organisation() {
     }
 
-    public Organisation(String name, String description, String color, String owner, Instant commenceDate) {
+    public Organisation(String name, String shortName, String description, String color, String owner,
+                        Instant commenceDate) {
         this.name = name;
+        this.shortName = shortName;
         this.description = description;
         this.color = color;
         this.owner = owner;
@@ -54,6 +59,10 @@ public class Organisation {
         return color;
     }
 
+    public String getShortName() {
+        return shortName;
+    }
+
     public String getOwner() {
         return owner;
     }
@@ -61,4 +70,6 @@ public class Organisation {
     public Instant getCommenceDate() {
         return commenceDate;
     }
+
+
 }

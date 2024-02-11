@@ -13,16 +13,19 @@ public class MemberInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 100, nullable = false)
+    @Column(name = "title", length = 15, nullable = false)
+    private String title;
+
+    @Column(name = "name", length = 200, nullable = false)
     private String name;
 
-    @Column(name = "address", length = 250)
+    @Column(name = "address", length = 300)
     private String address;
 
-    @Column(name = "dateOfBirth", nullable = false)
+    @Column(name = "dateOfBirth")
     private Instant dateOfBirth;
 
-    @Column(name = "email", length = 100, nullable = false, unique = true)
+    @Column(name = "email", length = 100, unique = true)
     private String email;
 
     @Column(name = "phoneNo", length = 12)
