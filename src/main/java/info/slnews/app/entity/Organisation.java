@@ -27,6 +27,9 @@ public class Organisation {
     @Column(name = "owner", length = 100)
     private String owner;
 
+    @Column(name = "link", length = 300)
+    private String link;
+
     @Column(name = "commenceDate")
     private Instant commenceDate;
 
@@ -34,13 +37,14 @@ public class Organisation {
     }
 
     public Organisation(String name, String shortName, String description, String color, String owner,
-                        Instant commenceDate) {
+                        Instant commenceDate, String link) {
         this.name = name;
         this.shortName = shortName;
         this.description = description;
         this.color = color;
         this.owner = owner;
         this.commenceDate = commenceDate;
+        this.link = link;
     }
 
     public Long getId() {
@@ -71,5 +75,7 @@ public class Organisation {
         return commenceDate;
     }
 
-
+    public String getLink() {
+        return link;
+    }
 }

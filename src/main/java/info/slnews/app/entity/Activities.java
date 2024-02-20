@@ -35,11 +35,13 @@ public class Activities {
     public Activities() {
     }
 
-    public Activities(String role, String description, Instant date, ActivityCategory category) {
+    public Activities(Long id, String role, String description, Instant date, ActivityCategory category, Long memberId) {
+        this.id = id;
         this.role = role;
         this.description = description;
         this.date = date;
         this.category = category;
+        this.memberId = memberId;
     }
 
     public Long getId() {
@@ -60,5 +62,9 @@ public class Activities {
 
     public ActivityCategory getCategory() {
         return category;
+    }
+
+    public Long getMemberId() {
+        return memberId;
     }
 }

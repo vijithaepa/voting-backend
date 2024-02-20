@@ -1,7 +1,10 @@
 package info.slnews.app.dto;
 
+import info.slnews.app.enums.UserStatus;
+
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
@@ -14,10 +17,11 @@ public class MemberDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 8893986844375457701L;
 
+    private Long id;
     private String title;
     private String fullName;
     private String address;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String email;
     private String phoneNo;
     private String memberStatus;
@@ -25,6 +29,26 @@ public class MemberDto implements Serializable {
     private List<PoliticalHistoryDto> political;
     private List<EducationHistoryDto> education;
     private List<ActivityHistoryDto> activities;
+    public MemberDto(){}
+    public MemberDto(Long id, String title, String fullName, String address, Instant dateOfBirth, String email,
+                     String phoneNo, UserStatus memberStatus) {
+        this.id = id;
+        this.title = title;
+        this.fullName = fullName;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth.toString();
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.memberStatus = memberStatus.name();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -50,11 +74,11 @@ public class MemberDto implements Serializable {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -104,5 +128,10 @@ public class MemberDto implements Serializable {
 
     public void setActivities(List<ActivityHistoryDto> activities) {
         this.activities = activities;
+    }
+
+    public static void main(String[] args) {
+        Instant t = Instant.ofEpochMilli(328924800);    //328924800, 707616000
+        System.out.println("Now " + t);
     }
 }

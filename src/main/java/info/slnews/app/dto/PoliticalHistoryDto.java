@@ -5,10 +5,19 @@ import java.util.Date;
 //{start=2024-02-20T13:00:00.000Z, noOfYears=4, role=3sdfsdf, org=slp}]
 public class PoliticalHistoryDto {
 
+    private Long id;
     private String role;
     private String org;
     private Date start;
     private int noOfYears;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRole() {
         return role;

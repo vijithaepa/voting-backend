@@ -31,10 +31,12 @@ public class PoliticalHistory {
     public PoliticalHistory() {
     }
 
-    public PoliticalHistory(String role, Instant commenceDate, int noOfYears) {
+    public PoliticalHistory(Long id, String role, Instant commenceDate, int noOfYears, Long memberId) {
+        this.id = id;
         this.role = role;
         this.commenceDate = commenceDate;
         this.noOfYears = noOfYears;
+        this.memberId = memberId;
     }
 
     public Long getId() {
@@ -59,5 +61,9 @@ public class PoliticalHistory {
 
     public void setOrganisation(Organisation organisation) {
         this.organisation = organisation;
+    }
+
+    public Long getMemberId() {
+        return memberId;
     }
 }

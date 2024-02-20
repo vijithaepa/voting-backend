@@ -5,10 +5,19 @@ import java.util.Date;
 //{date=2024-02-19T13:00:00.000Z, description=j kljlkasd kajskldfo8ihwilef, role=boss, category=political}
 public class ActivityHistoryDto {
 
+    private Long id;
     private String role;
     private String description;
     private String category;
     private Date date;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRole() {
         return role;

@@ -47,8 +47,12 @@ public class MemberInfo {
     public MemberInfo() {
     }
 
-    public MemberInfo(String name, String address, Instant dateOfBirth, String email, String phoneNo, String image,
+    public MemberInfo(Long id, String title, String name, String address, Instant dateOfBirth, String email,
+                      String phoneNo,
+                      String image,
                       Instant createdOn, UserStatus status, Instant updatedOn) {
+        this.id = id;
+        this.title = title;
         this.name = name;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
@@ -62,6 +66,10 @@ public class MemberInfo {
 
     public Long getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getName() {

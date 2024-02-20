@@ -35,13 +35,15 @@ public class Education {
     public Education() {
     }
 
-    public Education(String qualification, String institution, Instant commencedOn, QualificationStatus status,
-                     String description) {
+    public Education(Long id, String qualification, String institution, Instant commencedOn, QualificationStatus status,
+                     String description, Long memberId) {
+        this.id = id;
         this.qualification = qualification;
         this.institution = institution;
         this.commencedOn = commencedOn;
         this.status = status;
         this.description = description;
+        this.memberId = memberId;
     }
 
     public Long getId() {
@@ -66,5 +68,9 @@ public class Education {
 
     public String getDescription() {
         return description;
+    }
+
+    public Long getMemberId() {
+        return memberId;
     }
 }
