@@ -30,8 +30,10 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     database: mysql
 #    generate-ddl: true
-#    hibernate:
+    hibernate:
 #      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 #
 #  liquibase:

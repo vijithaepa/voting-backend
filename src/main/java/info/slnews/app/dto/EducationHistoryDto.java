@@ -1,16 +1,38 @@
 package info.slnews.app.dto;
 
-import java.util.Date;
+import info.slnews.app.enums.QualificationStatus;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.Instant;
 
 //{institution=fdsd, qualification=fghj, from=2024-02-13T13:00:00.000Z, to=2024-02-13T13:00:00.000Z, status=active}
-public class EducationHistoryDto {
+public class EducationHistoryDto implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -4384124890543994008L;
 
     private Long id;
     private String institution;
     private String qualification;
-    private Date from;
-    private Date to;
-    private String status;
+    private Instant from;
+    private Instant to;
+    private String description;
+    private QualificationStatus status;
+
+    public EducationHistoryDto() {
+    }
+
+    public EducationHistoryDto(Long id, String institution, String qualification, Instant from, Instant to,
+                               QualificationStatus status, String description) {
+        this.id = id;
+        this.institution = institution;
+        this.qualification = qualification;
+        this.from = from;
+        this.to = to;
+        this.status = status;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -36,27 +58,31 @@ public class EducationHistoryDto {
         this.qualification = qualification;
     }
 
-    public Date getFrom() {
+    public Instant getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(Instant from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public Instant getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(Instant to) {
         this.to = to;
     }
 
-    public String getStatus() {
+    public QualificationStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(QualificationStatus status) {
         this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

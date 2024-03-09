@@ -1,15 +1,32 @@
 package info.slnews.app.dto;
 
-import java.util.Date;
+import info.slnews.app.enums.ActivityCategory;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.Instant;
 
 //{date=2024-02-19T13:00:00.000Z, description=j kljlkasd kajskldfo8ihwilef, role=boss, category=political}
-public class ActivityHistoryDto {
+public class ActivityHistoryDto implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -2558747749334830446L;
     private Long id;
     private String role;
     private String description;
-    private String category;
-    private Date date;
+    private ActivityCategory category;
+    private Instant date;
+
+    public ActivityHistoryDto() {
+    }
+
+    public ActivityHistoryDto(Long id, String role, String description, ActivityCategory category, Instant date) {
+        this.id = id;
+        this.role = role;
+        this.description = description;
+        this.category = category;
+        this.date = date;
+    }
 
     public Long getId() {
         return id;
@@ -35,19 +52,19 @@ public class ActivityHistoryDto {
         this.description = description;
     }
 
-    public String getCategory() {
+    public ActivityCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(ActivityCategory category) {
         this.category = category;
     }
 
-    public Date getDate() {
+    public Instant getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 }

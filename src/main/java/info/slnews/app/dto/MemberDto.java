@@ -5,7 +5,6 @@ import info.slnews.app.enums.UserStatus;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 //{title=mr, fullName=vijitha epa, address=, dateOfBirth=, email=, phoneNo=, memberStatus=active,
@@ -21,25 +20,30 @@ public class MemberDto implements Serializable {
     private String title;
     private String fullName;
     private String address;
-    private String dateOfBirth;
+    private Instant dateOfBirth;
     private String email;
     private String phoneNo;
-    private String memberStatus;
+    private UserStatus memberStatus;
+    private String image;
 
     private List<PoliticalHistoryDto> political;
     private List<EducationHistoryDto> education;
     private List<ActivityHistoryDto> activities;
-    public MemberDto(){}
+
+    public MemberDto() {
+    }
+
     public MemberDto(Long id, String title, String fullName, String address, Instant dateOfBirth, String email,
-                     String phoneNo, UserStatus memberStatus) {
+                     String phoneNo, String image, UserStatus memberStatus) {
         this.id = id;
         this.title = title;
         this.fullName = fullName;
         this.address = address;
-        this.dateOfBirth = dateOfBirth.toString();
+        this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phoneNo = phoneNo;
-        this.memberStatus = memberStatus.name();
+        this.image = image;
+        this.memberStatus = memberStatus;
     }
 
     public Long getId() {
@@ -74,11 +78,11 @@ public class MemberDto implements Serializable {
         this.address = address;
     }
 
-    public String getDateOfBirth() {
+    public Instant getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Instant dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -98,11 +102,11 @@ public class MemberDto implements Serializable {
         this.phoneNo = phoneNo;
     }
 
-    public String getMemberStatus() {
+    public UserStatus getMemberStatus() {
         return memberStatus;
     }
 
-    public void setMemberStatus(String memberStatus) {
+    public void setMemberStatus(UserStatus memberStatus) {
         this.memberStatus = memberStatus;
     }
 
@@ -130,8 +134,8 @@ public class MemberDto implements Serializable {
         this.activities = activities;
     }
 
-    public static void main(String[] args) {
-        Instant t = Instant.ofEpochMilli(328924800);    //328924800, 707616000
-        System.out.println("Now " + t);
+    public String getImage() {
+        return image;
     }
+
 }

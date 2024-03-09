@@ -22,6 +22,9 @@ public class Education {
     @Column(name = "commencedOn")
     private Instant commencedOn;
 
+    @Column(name = "endDate")
+    private Instant endedOn;
+
     @Column(name = "status", length = 20, nullable = false)
     @Enumerated(EnumType.STRING)
     private QualificationStatus status;
@@ -35,12 +38,14 @@ public class Education {
     public Education() {
     }
 
-    public Education(Long id, String qualification, String institution, Instant commencedOn, QualificationStatus status,
+    public Education(Long id, String qualification, String institution, Instant commencedOn, Instant endedOn,
+                     QualificationStatus status,
                      String description, Long memberId) {
         this.id = id;
         this.qualification = qualification;
         this.institution = institution;
         this.commencedOn = commencedOn;
+        this.endedOn = endedOn;
         this.status = status;
         this.description = description;
         this.memberId = memberId;
@@ -68,6 +73,10 @@ public class Education {
 
     public String getDescription() {
         return description;
+    }
+
+    public Instant getEndedOn() {
+        return endedOn;
     }
 
     public Long getMemberId() {

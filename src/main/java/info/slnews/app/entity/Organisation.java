@@ -36,8 +36,9 @@ public class Organisation {
     public Organisation() {
     }
 
-    public Organisation(String name, String shortName, String description, String color, String owner,
+    public Organisation(Long id, String name, String shortName, String description, String color, String owner,
                         Instant commenceDate, String link) {
+        this.id = id;
         this.name = name;
         this.shortName = shortName;
         this.description = description;

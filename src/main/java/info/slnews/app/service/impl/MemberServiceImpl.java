@@ -1,10 +1,9 @@
 package info.slnews.app.service.impl;
 
+import info.slnews.app.dto.DTOUtil;
 import info.slnews.app.dto.MemberDto;
-import info.slnews.app.entity.Activities;
-import info.slnews.app.entity.Education;
 import info.slnews.app.entity.MemberInfo;
-import info.slnews.app.entity.PoliticalHistory;
+import info.slnews.app.enums.QualificationStatus;
 import info.slnews.app.repo.ActivityRepo;
 import info.slnews.app.repo.EducationRepo;
 import info.slnews.app.repo.MemberInfoRepo;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -38,7 +38,14 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberDto saveMember(MemberDto memberDto) {
 
-        return null;
+        MemberInfo info = memberInfoRepo.save(DTOUtil.dtoToEntity(memberDto));
+        if(memberDto.getPolitical() != null && !memberDto.getPolitical().isEmpty())
+            politicalHistoryRepo.saveAll(DTOUtil.dtoToPoliticalEntity(memberDto.getPolitical(), info.getId()));
+        if(memberDto.getEducation() != null && !memberDto.getEducation().isEmpty())
+            educationRepo.saveAll(DTOUtil.dtoToEducationEntity(memberDto.getEducation(), info.getId()));
+        if(memberDto.getActivities() != null && !memberDto.getActivities().isEmpty())
+            activityRepo.saveAll(DTOUtil.dtoToActivityEntity(memberDto.getActivities(), info.getId()));
+        return DTOUtil.entityToDto(info);
     }
 
     @Override

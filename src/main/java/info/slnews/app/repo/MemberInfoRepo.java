@@ -14,7 +14,8 @@ public interface MemberInfoRepo extends JpaRepository<MemberInfo, Long> {
 
     //Long id, String title, String fullName, String address, Instant dateOfBirth, String email,
     //                     String phoneNo, String memberStatus
-    @Query("SELECT new info.slnews.app.dto.MemberDto(id,title,name,address,dateOfBirth,email,phoneNo,status) FROM " +
+    @Query("SELECT new info.slnews.app.dto.MemberDto(id,title,name,address,dateOfBirth,email,phoneNo, image,status) " +
+            "FROM " +
             "MemberInfo")
     List<MemberDto> findAllMemberInfo();
 }

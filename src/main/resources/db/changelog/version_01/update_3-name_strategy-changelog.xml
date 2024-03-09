@@ -1,0 +1,165 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="timmy (generated)" id="1710023809460-8">
+        <addColumn tableName="political_history">
+            <column name="commenceDate" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-9">
+        <addColumn tableName="education">
+            <column name="commencedOn" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-10">
+        <addColumn tableName="organisation">
+            <column name="commenceDate" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-11">
+        <addColumn tableName="member_info">
+            <column name="createdOn" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-12">
+        <addColumn tableName="member_info">
+            <column name="dateOfBirth" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-13">
+        <addColumn tableName="education">
+            <column name="endDate" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-14">
+        <addColumn tableName="convictions">
+            <column name="incidentDate" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-15">
+        <addColumn tableName="political_history">
+            <column name="noOfYears" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-16">
+        <addColumn tableName="user">
+            <column name="createdOn" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-17">
+        <addColumn tableName="organisation">
+            <column name="link" type="VARCHAR(300 BYTE)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-18">
+        <addColumn tableName="user">
+            <column name="dateOfBirth" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-19">
+        <addColumn tableName="convictions">
+            <column name="publishedDate" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-20">
+        <addColumn tableName="member_info">
+            <column name="phoneNo" type="VARCHAR(12 BYTE)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-21">
+        <addColumn tableName="organisation">
+            <column name="shortName" type="VARCHAR(100 BYTE)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-22">
+        <addColumn tableName="member_info">
+            <column name="title" type="VARCHAR(15 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-23">
+        <addColumn tableName="member_info">
+            <column name="updatedOn" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-24">
+        <addColumn tableName="user">
+            <column name="phoneNo" type="VARCHAR(12 BYTE)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-25">
+        <dropUniqueConstraint constraintName="UNIQUE_INS_QLI" tableName="education"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-26">
+        <dropColumn columnName="commence_date" tableName="organisation"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-27">
+        <dropColumn columnName="commence_date" tableName="political_history"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-28">
+        <dropColumn columnName="commenced_on" tableName="education"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-29">
+        <dropColumn columnName="created_on" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-30">
+        <dropColumn columnName="created_on" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-31">
+        <dropColumn columnName="date_of_birth" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-32">
+        <dropColumn columnName="date_of_birth" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-33">
+        <dropColumn columnName="incident_date" tableName="convictions"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-34">
+        <dropColumn columnName="no_of_years" tableName="political_history"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-35">
+        <dropColumn columnName="other_category" tableName="activities"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-36">
+        <dropColumn columnName="phone_no" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-37">
+        <dropColumn columnName="phone_no" tableName="user"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-38">
+        <dropColumn columnName="published_date" tableName="convictions"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-39">
+        <dropColumn columnName="short_name" tableName="organisation"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-40">
+        <dropColumn columnName="updated_on" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-1">
+        <modifyDataType columnName="address" newDataType="varchar(300)" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-2">
+        <modifyDataType columnName="category" newDataType="ENUM('SOCIAL_SERVICE','POLITICAL_EVENT','OTHER','COMMUNITY_EVENT','CHARITY_EVENT')" tableName="activities"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-3">
+        <dropNotNullConstraint columnDataType="varchar(100)" columnName="email" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-4">
+        <modifyDataType columnName="name" newDataType="varchar(200)" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-5">
+        <modifyDataType columnName="status" newDataType="ENUM('SUSPENDED','IM_PROGRESS','FAILED','COMPLETED')" tableName="education"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-6">
+        <modifyDataType columnName="status" newDataType="ENUM('INACTIVE','DRAFT','ACTIVE')" tableName="member_info"/>
+    </changeSet>
+    <changeSet author="timmy (generated)" id="1710023809460-7">
+        <modifyDataType columnName="status" newDataType="ENUM('INACTIVE','DRAFT','ACTIVE')" tableName="user"/>
+    </changeSet>
+</databaseChangeLog>
