@@ -17,7 +17,7 @@ public class SecurityConfig {
 //                .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> {
 //                    auth.requestMatchers("/greeting/**").permitAll();
-                    auth.requestMatchers("/member/**").permitAll();
+                    auth.requestMatchers("/voting/**").permitAll();
                     auth.anyRequest().permitAll();
                 })
 //                .httpBasic(Customizer.withDefaults())
