@@ -5,4 +5,5 @@
     <include file="version_01/init-changelog.xml" relativeToChangelogFile="true"/>
     <include file="version_01/update_1-changelog.xml" relativeToChangelogFile="true"/>
     <include file="version_01/update_2-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="version_01/update_3-name_strategy-changelog.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

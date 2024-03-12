@@ -27,7 +27,7 @@ spring:
     hikari:
       max-lifetime: 360000 # 1 hour
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
+#    database-platform: org.hibernate.dialect.MySQLDialect
     database: mysql
 #    generate-ddl: true
     hibernate:
