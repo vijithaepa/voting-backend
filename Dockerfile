@@ -17,4 +17,4 @@ COPY ${JAR_FILE} app.jar
 #EXPOSE 8080
 
 # set up a default command
-ENTRYPOINT ["java","-jar","/server/backend/app.jar"]
+CMD ["java","-DLOG_PATH=/server/backend/logs","-jar","/server/backend/app.jar"]
