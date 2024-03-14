@@ -1,12 +1,51 @@
 version: '3.9'
 services:
-  web:
-    restart: unless-stopped   # restart policy
-#    logging:
-#      driver: none
+  db:
+    container_name: mysql
+    image: mysql
+    restart: unless-stopped
+    networks:
+      - voting-nw
+    environment:
+#      - MYSQL_DATABASE=slnews-voting
+      - MYSQL_ROOT_PASSWORD= password
+    volumes:
+      - /Users/timmy/work/voting-db/:/var/lib/mysql
+#      - /Users/timmy/work/voting-db/log:/var/log
+    ports:
+      - "3306:3306"
+
+  server:
+    container_name: backend
+    restart: unless-stopped
+    networks:
+      - voting-nw
+    links:
+      - "db:sl-database"
+    logging:
+      driver: none
     build:
       context: .
       dockerfile: Dockerfile
-#    image: 'front-end-server'
+    image: 'backend-server'
     ports:
       - "8080:8080"
+
+networks:
+  voting-nw:
+    driver: bridge
+#networks:
+#  voting-nw:
+#    external: true
+
+#      volumes:
+#        - .:/server/ui              # second param: map {current folder} to {/server/ui} in container
+#        - /server/ui/node_modules   # first param : do not map this inside the container
+#  web-tests:    # run tests in separate container and watch
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.dev
+#    volumes:
+#      - /server/ui/node_modules   # first param : do not map this inside the container
+#      - .:/server/ui              # second param: map {current folder} to {/server/ui} in container
+#    command: ["npm", "run", "test"]
