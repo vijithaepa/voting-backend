@@ -47,19 +47,19 @@ jobs:
 #        shell: bash
       - name: build the stack and up
         run: docker-compose up -d
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-#          image: voting-server
-          context: ./
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
+#      - name: Login to Docker Hub
+#        uses: docker/login-action@v3
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      - name: Build and push
+#        uses: docker/build-push-action@v5
+#        with:
+##          image: voting-server
+#          context: ./
+#          file: ./Dockerfile
+#          push: true
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
 #      - name: Docker pull and run image
 #        uses: appleboy/ssh-action@v1.0.0
 #        with:
