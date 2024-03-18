@@ -12,8 +12,8 @@ docker run --name mysql \
 --restart unless-stopped \
 -p 3306:3306 \
 -e MYSQL_ROOT_PASSWORD=password \
--v /Users/timmy/work/voting-db/:/var/lib/mysql \
-mysql:8
+-v /home/ubuntu/db:/var/lib/mysql \
+mysql
 
 docker run -d -p 8080:8080 -name backend backend/latest
     docker build -t voting-app .
