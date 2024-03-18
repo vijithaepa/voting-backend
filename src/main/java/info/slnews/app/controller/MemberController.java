@@ -42,12 +42,13 @@ public class MemberController {
 
     @GetMapping(path = "/member")
     public ResponseEntity<List<MemberDto>> getMembers() {
-
+        logger.info("get all member details ");
         return ResponseEntity.ok(memberService.getMembers());
     }
 
     @GetMapping(path = "/member/config")
     public ResponseEntity<Map<String, Object>> getMemberConfigs() {
+        logger.info("Get configs");
         Map<String, Object> configs = new HashMap<>();
         configs.put("organasations", organisationService.getAll());
         configs.put("qualificationStatus", DTOUtil.getConstantMap(QualificationStatus.class));
