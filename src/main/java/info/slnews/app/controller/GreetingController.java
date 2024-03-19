@@ -11,6 +11,12 @@ import java.time.Instant;
 @RequestMapping
 public class GreetingController {
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+
+        return ResponseEntity.ok("Good health " + Instant.now());
+    }
+
     @GetMapping("/greeting")
     public ResponseEntity<String> greeting() {
 
