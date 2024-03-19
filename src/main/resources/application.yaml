@@ -21,8 +21,8 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB_VOTING_HOST:sl-database}:3306/slnews-voting
-    username: ${DB_VOTING_USER:root}
+    url: jdbc:mysql://${DB_VOTING_HOST:localhost}:3306/slnews-voting
+    username: ${DB_VOTING_USER:voting-user}
     password: ${DB_VOTING_PASS:password}
     hikari:
       max-lifetime: 360000 # 1 hour
