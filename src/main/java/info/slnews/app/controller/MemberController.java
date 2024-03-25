@@ -15,6 +15,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,18 +33,18 @@ public class MemberController {
     private MemberService memberService;
 
     @PostMapping(path = "/member", consumes="application/json")
-    public ResponseEntity<Map<String, Object>> addMember(@RequestBody MemberDto newMember) {
+    public ResponseEntity<MemberDto> addMember(@RequestBody MemberDto newMember) {
         logger.info("New member details " + newMember);
 
-        memberService.saveMember(newMember);
+        return  ResponseEntity.ok(memberService.saveMember(newMember));
 
-        return null;
     }
 
     @GetMapping(path = "/member")
     public ResponseEntity<List<MemberDto>> getMembers() {
         logger.info("get all member details ");
-        return ResponseEntity.ok(memberService.getMembers());
+        return ResponseEntity.ok(new ArrayList<>());
+//        return ResponseEntity.ok(memberService.getMembers());
     }
 
     @GetMapping(path = "/member/config")
