@@ -3,6 +3,7 @@ package info.slnews.app.controller;
 
 import info.slnews.app.dto.DTOUtil;
 import info.slnews.app.dto.MemberDto;
+import info.slnews.app.entity.Organisation;
 import info.slnews.app.enums.ActivityCategory;
 import info.slnews.app.enums.QualificationStatus;
 import info.slnews.app.enums.UserStatus;
@@ -47,11 +48,16 @@ public class MemberController {
 //        return ResponseEntity.ok(memberService.getMembers());
     }
 
+    @GetMapping(path = "/member/organisations")
+    public ResponseEntity<List<Organisation>> getOrgs() {
+        return ResponseEntity.ok(organisationService.getAll());
+    }
+
     @GetMapping(path = "/member/config")
     public ResponseEntity<Map<String, Object>> getMemberConfigs() {
         logger.info("Get configs");
         Map<String, Object> configs = new HashMap<>();
-        configs.put("organasations", organisationService.getAll());
+        configs.put("organisations", new ArrayList<Organisation>()); // organisationService.getAll()
         configs.put("qualificationStatus", DTOUtil.getConstantMap(QualificationStatus.class));
         configs.put("activityCategories", DTOUtil.getConstantMap(ActivityCategory.class));
         configs.put("userStatus", DTOUtil.getConstantMap(UserStatus.class));
